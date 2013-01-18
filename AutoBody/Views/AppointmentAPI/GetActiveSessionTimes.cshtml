@@ -1,0 +1,76 @@
+﻿@model AutoBody.Models.GetActiveSessionTimesModel
+
+@{
+    ViewBag.Title = "GetActiveSessionTimes";
+}
+
+<h2>GetStaffAppointments</h2>
+<ul data-role="listview" data-inset="true">
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+</ul>
+
+@using (Html.BeginForm("GetActiveSessionTimesRequest", "AppointmentAPI", FormMethod.Get))
+{
+    @Html.ValidationSummary()
+    <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">Required</li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.SourceName)
+            @Html.TextBoxFor(m => m.SourceName, new { @Value = ViewBag.Credentials.SourceName})            
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.SourcePassword)
+            @Html.TextBoxFor(m => m.SourcePassword, new { @Value = ViewBag.Credentials.SourcePassword})            
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.Username)
+            @Html.TextBoxFor(m => m.Username, new { @Value = ViewBag.Credentials.Username})            
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.Password)
+            @Html.TextBoxFor(m => m.Password, new { @Value = ViewBag.Credentials.Password})            
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.SiteID)
+            @Html.TextBoxFor(m => m.SiteID, new { @Value = ViewBag.Credentials.SiteID})
+        </li>
+        
+    </ul>
+    
+    <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">Optional</li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.ScheduleType)
+            @Html.TextBoxFor(m => m.ScheduleType)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.SessionTypeIDs)
+            @Html.TextBoxFor(m => m.SessionTypeIDs)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.StartTime)
+            @Html.TextBoxFor(m => m.StartTime)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.EndTime)
+            @Html.TextBoxFor(m => m.EndTime)
+        </li>
+
+        <li data-role="fieldcontain">
+            <input type="submit" value="Send Request" />
+        </li>
+    </ul>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

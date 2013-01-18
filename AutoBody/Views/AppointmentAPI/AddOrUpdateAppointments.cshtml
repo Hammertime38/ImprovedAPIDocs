@@ -1,0 +1,406 @@
+﻿@model AutoBody.Models.AddOrUpdateAppointmentsModel
+
+@{
+    ViewBag.Title = "AddOrUpdateAppointments";
+    
+    //I don't care about W3 validation right now.
+}
+
+<h2>AddOrUpdateAppointments <img id="post_warning" src="@Url.Content("~/Content/images/warning_256.png")" width="20px" height="20px"/></h2>
+<ul data-role="listview" data-inset="true">
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+</ul>
+
+@using (Html.BeginForm("AddOrUpdateAppointmentsRequest", "AppointmentAPI", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">Required</li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.SourceName)
+            @Html.TextBoxFor(m => m.SourceName, new { @Value = ViewBag.Credentials.SourceName})            
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.SourcePassword)
+            @Html.TextBoxFor(m => m.SourcePassword, new { @Value = ViewBag.Credentials.SourcePassword})            
+        </li>
+
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.StaffName)
+            @Html.TextBoxFor(m => m.StaffName, new { @Value = ViewBag.Credentials.StaffName})            
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.StaffPassword)
+            @Html.TextBoxFor(m => m.StaffPassword, new { @Value = ViewBag.Credentials.StaffPassword})            
+        </li>
+
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.Username)
+            @Html.TextBoxFor(m => m.Username, new { @Value = ViewBag.Credentials.Username})            
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.Password)
+            @Html.TextBoxFor(m => m.Password, new { @Value = ViewBag.Credentials.Password})            
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.SiteID)
+            @Html.TextBoxFor(m => m.SiteID, new { @Value = ViewBag.Credentials.SiteID})
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.UpdateAction)
+            @Html.TextBoxFor(m => m.UpdateAction)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.Test)
+            @Html.CheckBoxFor(m => m.Test)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.SendEmail)
+            @Html.CheckBoxFor(m => m.SendEmail)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.ApplyPayment)
+            @Html.CheckBoxFor(m => m.ApplyPayment)
+        </li>
+
+    </ul>
+    <div id="wrap_appointments"> 
+        <div id="appointment0" data-role="collapsible-set" data-collapsed="false">
+            <ul data-role="collapsible">
+            
+                <h3>Appointment</h3>
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="fieldcontain">
+                        @Html.LabelFor(m => m.Appointments[0].appt_ID)
+                        @Html.TextBoxFor(m => m.Appointments[0].appt_ID)            
+                    </li>
+            
+                    <li data-role="fieldcontain">
+                        @Html.LabelFor(m => m.Appointments[0].appt_Status)
+                        @Html.TextBoxFor(m => m.Appointments[0].appt_Status)            
+                    </li>
+            
+                    <li data-role="fieldcontain">
+                        @Html.LabelFor(m => m.Appointments[0].appt_StartDateTime)
+                        @Html.TextBoxFor(m => m.Appointments[0].appt_StartDateTime)            
+                    </li>
+            
+                    <li data-role="fieldcontain">
+                        @Html.LabelFor(m => m.Appointments[0].appt_Notes)
+                        @Html.TextBoxFor(m => m.Appointments[0].appt_Notes)            
+                    </li>
+            
+                    <li data-role="fieldcontain">
+                        @Html.LabelFor(m => m.Appointments[0].appt_StaffRequested)
+                        @Html.TextBoxFor(m => m.Appointments[0].appt_StaffRequested)            
+                    </li>
+
+            
+                    <ul data-role="listview" role="heading" data-inset="true">
+                        <li data-role="list-divider">@Html.LabelFor(m => m.Appointments[0].appt_Program)</li>
+
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Program.prgm_ID)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Program.prgm_ID)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Program.prgm_Name)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Program.prgm_Name)            
+                        </li>
+                    </ul>
+
+                    <ul data-role="listview" data-inset="true">
+                        <li data-role="list-divider">@Html.LabelFor(m => m.Appointments[0].appt_SessionType)</li>
+
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_SessionType.sestp_ID)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_SessionType.sestp_ID)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_SessionType.sestp_Name)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_SessionType.sestp_Name)            
+                        </li>
+                    </ul>
+            
+                    <ul data-role="listview" data-inset="true">
+                        <li data-role="list-divider">@Html.LabelFor(m => m.Appointments[0].appt_Location)</li>
+
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_BusinessID)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_BusinessID)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_SiteID)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_SiteID)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_BusinessDescription)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_BusinessDescription)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_AddImageUrls)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_AddImageUrls)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_FacilitySqFt)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_FacilitySqFt)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_TreamentRooms)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_TreamentRooms)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_SpaFinderSite)
+                            @Html.CheckBoxFor(m => m.Appointments[0].appt_Location.loc_SpaFinderSite)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_HasClasses)
+                            @Html.CheckBoxFor(m => m.Appointments[0].appt_Location.loc_HasClasses)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_PhoneExt)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_PhoneExt)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_ID)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_ID)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_Name)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_Name)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_Latitude)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_Latitude)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_Longitude)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_Longitude)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_DistanceInMiles)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_DistanceInMiles)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_ImageURL)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_ImageURL)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_Description)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_Description)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_HasSite)
+                            @Html.CheckBoxFor(m => m.Appointments[0].appt_Location.loc_HasSite)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Location.loc_CanBook)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Location.loc_CanBook)            
+                        </li>
+                
+                    </ul>
+            
+                    <ul data-role="listview" data-inset="true">
+                        <li data-role="list-divider">@Html.LabelFor(m => m.Appointments[0].appt_Staff)</li>
+
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_Email)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_Email)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_MobilePhone)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_MobilePhone)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_HomePhone)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_HomePhone)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_WorkPhone)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_WorkPhone)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_Address)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_Address)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_Address2)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_Address2)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_City)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_City)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_State)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_State)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_Country)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_Country)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_PostalCode)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_PostalCode)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_ForeignZip)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_ForeignZip)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_ID)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_ID)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_Name)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_Name)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_FirstName)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_FirstName)            
+                        </li>
+                 
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Staff.staff_LastName)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Staff.staff_LastName)            
+                        </li>
+                    </ul>
+            
+                    <ul data-role="listview" data-corners="false" data-inset="true">
+                        <li data-role="list-divider">@Html.LabelFor(m => m.Appointments[0].appt_Client)</li>
+
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Client.clt_ID)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Client.clt_ID)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Client.clt_FirstName)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Client.clt_FirstName)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Client.clt_LastName)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Client.clt_LastName)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Client.clt_Email)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Client.clt_Email)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Client.clt_MobilePhone)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Client.clt_MobilePhone)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Client.clt_HomePhone)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Client.clt_HomePhone)            
+                        </li>
+
+                    </ul>
+
+                    <li data-role="fieldcontain">
+                        @Html.LabelFor(m => m.Appointments[0].appt_FirstAppointment)
+                        @Html.CheckBoxFor(m => m.Appointments[0].appt_FirstAppointment)            
+                    </li>
+            
+                    <ul data-role="listview" data-inset="true">
+                        <li data-role="list-divider">@Html.LabelFor(m => m.Appointments[0].appt_ClientService)</li>
+
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_ClientService.cltsv_ID)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_ClientService.cltsv_ID)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_ClientService.cltsv_Name)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_ClientService.cltsv_Name)            
+                        </li>
+                    </ul>
+            
+                    <ul data-role="listview" data-inset="true">
+                        <li data-role="list-divider">@Html.LabelFor(m => m.Appointments[0].appt_Resources)</li>
+
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Resources[0].res_ID)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Resources[0].res_ID)            
+                        </li>
+                
+                        <li data-role="fieldcontain">
+                            @Html.LabelFor(m => m.Appointments[0].appt_Resources[0].res_Name)
+                            @Html.TextBoxFor(m => m.Appointments[0].appt_Resources[0].res_Name)            
+                        </li>
+                    </ul>
+                </ul>
+            </ul>
+        
+
+        </div>
+    </div>
+
+    <a id="add_appointment" href="javascript:;" data-role="button" data-theme="a" data-icon="plus">Add Appointment</a>
+    
+    @Html.HiddenFor(m => m.appointmentsCount)
+    
+    <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">Optional</li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.StaffID)
+            @Html.TextBoxFor(m => m.StaffID)
+        </li>
+
+        <li data-role="fieldcontain">
+            <input type="submit" value="Send Request" />
+        </li>
+    </ul>
+}
+
+@section Javascript
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/AppointmentScripts/add_appointment.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/GlobalScripts/post_tooltip.js")"></script>
+}

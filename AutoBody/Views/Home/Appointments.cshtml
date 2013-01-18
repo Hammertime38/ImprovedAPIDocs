@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Appointments";
+}
+
+<ul data-role="listview" data-inset="true">
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li>@Html.ActionLink("Back to Staff List", "AboutStaff", "Home")</li>
+</ul>
+
+
+<h2>Appointments for @ViewBag.staffId</h2>
+
+        <ul>
+        @{
+            foreach (var appt in ViewBag.appts)
+            {
+                <li>@appt.Client.FirstName @appt.Client.LastName [<b>@appt.StartDateTime - @appt.EndDateTime</b>] </li>
+
+            }
+        }
+        </ul>

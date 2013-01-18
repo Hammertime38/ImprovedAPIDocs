@@ -1,0 +1,111 @@
+﻿@model AutoBody.Models.AddOrUpdateAvailabilitiesModel
+
+@{
+    ViewBag.Title = "AddOrUpdateAvailabilities";
+}
+
+<h2>GetStaffAppointments</h2>
+<ul data-role="listview" data-inset="true">
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+</ul>
+
+@using (Html.BeginForm("AddOrUpdateAvailabilitiesRequest", "AppointmentAPI", FormMethod.Get))
+{
+    @Html.ValidationSummary()
+    <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">Required</li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.SourceName)
+            @Html.TextBoxFor(m => m.SourceName, new { @Value = ViewBag.Credentials.SourceName})            
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.SourcePassword)
+            @Html.TextBoxFor(m => m.SourcePassword, new { @Value = ViewBag.Credentials.SourcePassword})            
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.Username)
+            @Html.TextBoxFor(m => m.Username, new { @Value = ViewBag.Credentials.Username})            
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.Password)
+            @Html.TextBoxFor(m => m.Password, new { @Value = ViewBag.Credentials.Password})            
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.SiteID)
+            @Html.TextBoxFor(m => m.SiteID, new { @Value = ViewBag.Credentials.SiteID})
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.LocationID)
+            @Html.TextBoxFor(m => m.LocationID)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.StartDate)
+            @Html.TextBoxFor(m => m.StartDate)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.EndDate)
+            @Html.TextBoxFor(m => m.EndDate)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.UnavailableDescription)
+            @Html.TextBoxFor(m => m.UnavailableDescription)
+        </li>
+        
+    </ul>
+    
+    <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">Optional</li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.UpdateAction)
+            @Html.TextBoxFor(m => m.UpdateAction)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.Test)
+            @Html.CheckBoxFor(m => m.Test)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.AvalibilityIDs)
+            @Html.TextBoxFor(m => m.AvalibilityIDs)
+        </li>
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.StaffIDs)
+            @Html.TextBoxFor(m => m.StaffIDs)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.ProgramIDs)
+            @Html.TextBoxFor(m => m.ProgramIDs)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.DaysOfWeek)
+            @Html.TextBoxFor(m => m.DaysOfWeek)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.IsUnavailable)
+            @Html.CheckBoxFor(m => m.IsUnavailable)
+        </li>
+        
+        <li data-role="fieldcontain">
+            @Html.LabelFor(m => m.PublicDisplay)
+            @Html.TextBoxFor(m => m.PublicDisplay)
+        </li>
+
+        <li data-role="fieldcontain">
+            <input type="submit" value="Send Request" />
+        </li>
+    </ul>
+}

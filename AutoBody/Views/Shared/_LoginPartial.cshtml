@@ -1,0 +1,6 @@
+﻿@if(Request.IsAuthenticated) {
+    @Html.ActionLink("Change Credentials", "Index", "Account", routeValues: null, htmlAttributes: new { data_icon = "gear" })
+}
+else {
+    @Html.ActionLink("API Credentials", "APICredentials", "Account", routeValues: null, htmlAttributes: new { data_icon = "gear" })
+}

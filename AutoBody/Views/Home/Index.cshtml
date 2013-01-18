@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2><del>@ViewBag.Message</del></h2>
+<h2>@ViewBag.Message2</h2>
+
+<ul data-role="listview" data-inset="true">
+    <li>@Html.ActionLink("AppointmentService", "AppointmentService", "Home")</li>
+    <li>@Html.ActionLink("ClassService", "ClassService", "Home")</li>
+    <li>@Html.ActionLink("ClientService", "ClientService", "Home")</li>
+    <li>@Html.ActionLink("DataService", "DataService", "Home")</li>
+    <li>@Html.ActionLink("FinderService", "FinderService", "Home")</li>
+    <li>@Html.ActionLink("SaleService", "SaleService", "Home")</li>
+    <li>@Html.ActionLink("SiteService", "SiteService", "Home")</li>
+    <li>@Html.ActionLink("StaffService", "StaffService", "Home")</li>
+</ul>
+
+<h3>@ViewBag.Notice</h3>
