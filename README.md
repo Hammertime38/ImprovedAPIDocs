@@ -15,3 +15,4 @@ Current Goals
 - Preferrably, common requests need to be generic. The difficulty is that each API service lies in a completely different namespace.
 - Possibly create a generic response page, rather than one for each request.
 - Clean up the architecture in general; I've had to speed through quite a bit to achieve the main concept
+- Add different input types (select lists, date pickers, etc.) where necessary, improve support for lists
