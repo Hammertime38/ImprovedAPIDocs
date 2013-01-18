@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoBody.AppointmentService;
-using DayOfWeek = System.DayOfWeek;
 
 namespace AutoBody.Models
 {

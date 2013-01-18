@@ -7,6 +7,8 @@ Once the architecture is solid and cleaned up (a lot), I'll create a more formal
 
 I have already passed the main hurdles of handling large amounts of GET/POST data from web forms, but the current strategy involves a lot of typing.
 
+### Feel free to [collaborate](/Hammertime38/ImprovedAPIDocs/issues)
+
 
 Current Goals
 =============
