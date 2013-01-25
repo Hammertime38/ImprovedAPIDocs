@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using AutoBody.AppointmentService;
 using AutoBody.ClientService;
 using AutoBody.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace AutoBody.Controllers
 {
@@ -46,10 +43,13 @@ namespace AutoBody.Controllers
             var request = getClients(model);
             var response = clientService.GetClients(request);
 
-            @ViewBag.Request = JsonConvert.SerializeObject(request, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
-            @ViewBag.Response = JsonConvert.SerializeObject(response, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
+            //@ViewBag.Request = JsonConvert.SerializeObject(request, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
+            @ViewBag.Request = SoapSerializer.SerializeToSoap<GetClientsRequest>(request);
+            @ViewBag.Response = SoapSerializer.SerializeToSoap<GetClientsResult>(response);
 
             return View();
         }
+
+        
     }
 }

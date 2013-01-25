@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Soap;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoBody.AppointmentService;
 using AutoBody.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace AutoBody.Controllers
 {
@@ -81,8 +75,8 @@ namespace AutoBody.Controllers
             var request = getStaffAppointments(model);
             var response = appointmentService.GetStaffAppointments(request);
 
-            @ViewBag.Request = JsonConvert.SerializeObject(request, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
-            @ViewBag.Response = JsonConvert.SerializeObject(response, Formatting.Indented,new JsonConverter[] {new StringEnumConverter()});
+            @ViewBag.Request = SoapSerializer.SerializeToSoap<GetStaffAppointmentsRequest>(request);
+            @ViewBag.Response = SoapSerializer.SerializeToSoap<GetStaffAppointmentsResult>(response);
 
             return View();
         }
@@ -249,8 +243,8 @@ namespace AutoBody.Controllers
             var request = addOrUpdateAppointments(model);
             var response = appointmentService.AddOrUpdateAppointments(request);
 
-            @ViewBag.Request = JsonConvert.SerializeObject(request, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
-            @ViewBag.Response = JsonConvert.SerializeObject(response, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
+            @ViewBag.Request = SoapSerializer.SerializeToSoap<AddOrUpdateAppointmentsRequest>(request);
+            @ViewBag.Response = SoapSerializer.SerializeToSoap<AddOrUpdateAppointmentsResult>(response);
 
             return View();
         }
@@ -282,8 +276,8 @@ namespace AutoBody.Controllers
             var request = getBookableItems(model);
             var response = appointmentService.GetBookableItems(request);
 
-            @ViewBag.Request = JsonConvert.SerializeObject(request, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
-            @ViewBag.Response = JsonConvert.SerializeObject(response, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
+            @ViewBag.Request = SoapSerializer.SerializeToSoap<GetBookableItemsRequest>(request);
+            @ViewBag.Response = SoapSerializer.SerializeToSoap<GetBookableItemsResult>(response);
 
             return View();
         }
@@ -314,8 +308,8 @@ namespace AutoBody.Controllers
             var request = getScheduleItems(model);
             var response = appointmentService.GetScheduleItems(request);
 
-            @ViewBag.Request = JsonConvert.SerializeObject(request, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
-            @ViewBag.Response = JsonConvert.SerializeObject(response, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
+            @ViewBag.Request = SoapSerializer.SerializeToSoap<GetScheduleItemsRequest>(request);
+            @ViewBag.Response = SoapSerializer.SerializeToSoap<GetScheduleItemsResult>(response);
             
             return View();
         }
@@ -355,8 +349,8 @@ namespace AutoBody.Controllers
             var request = addOrUpdateAvailabilities(model);
             var response = appointmentService.AddOrUpdateAvailabilities(request);
 
-            @ViewBag.Request = JsonConvert.SerializeObject(request, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
-            @ViewBag.Response = JsonConvert.SerializeObject(response, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
+            @ViewBag.Request = SoapSerializer.SerializeToSoap<AddOrUpdateAvailabilitiesRequest>(request);
+            @ViewBag.Response = SoapSerializer.SerializeToSoap<AddOrUpdateAvailabilitiesResult>(response);
 
             return View();
         }
@@ -381,8 +375,8 @@ namespace AutoBody.Controllers
             var request = getActiveSessionTimes(model);
             var response = appointmentService.GetActiveSessionTimes(request);
 
-            @ViewBag.Request = JsonConvert.SerializeObject(request, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
-            @ViewBag.Response = JsonConvert.SerializeObject(response, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
+            @ViewBag.Request = SoapSerializer.SerializeToSoap<GetActiveSessionTimesRequest>(request);
+            @ViewBag.Response = SoapSerializer.SerializeToSoap<GetActiveSessionTimesResult>(response);
 
             return View();
         }
@@ -405,8 +399,8 @@ namespace AutoBody.Controllers
             var request = getAppointmentOptions(model);
             var response = appointmentService.GetAppointmentOptions(request);
 
-            @ViewBag.Request = JsonConvert.SerializeObject(request, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
-            @ViewBag.Response = JsonConvert.SerializeObject(response, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
+            @ViewBag.Request = SoapSerializer.SerializeToSoap<GetAppointmentOptionsRequest>(request);
+            @ViewBag.Response = SoapSerializer.SerializeToSoap<GetAppointmentOptionsResult>(response);
 
             return View();
         }
