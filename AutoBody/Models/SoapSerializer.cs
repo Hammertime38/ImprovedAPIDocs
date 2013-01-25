@@ -56,8 +56,14 @@ namespace AutoBody.Models
 
             foreach (var xElement in elements)
             {
-                if(xElement.Attribute("xmlns") != null)
-                    xElement.Attribute("xmlns").Remove();
+                if(xElement.Attributes().Any())
+                    xElement.Attributes().Remove();
+
+                foreach (var descendent in xElement.Descendants())
+                {
+                    if (descendent.Attributes().Any())
+                        descendent.Attributes().Remove();
+                }
             }
 
             return elements;
