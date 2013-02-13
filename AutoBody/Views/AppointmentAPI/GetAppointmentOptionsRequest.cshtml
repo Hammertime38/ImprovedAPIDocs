@@ -8,15 +8,42 @@
 </ul>
 
 <h1>Request</h1>
-<pre style="font-size: 20px">
 
-@ViewBag.Request
 
-</pre>
+<div id="request-nav" data-role="navbar">
+    <ul>
+        <li><a href="#request-soap">Soap</a></li>
+        <li><a href="#request-json">JSON</a></li>
+    </ul>
+</div>
+<br />
+
+<div class="code-box" id ="request">
+    <div id="request-soap">
+        <pre style="font-size: 20px">@ViewBag.Request_SOAP</pre>
+    </div>
+
+    <div id="request-json" style="display: none">
+        <pre style="font-size: 20px">@ViewBag.Request_JSON</pre>
+    </div>
+</div>
+
 
 <h1>Response</h1>
-<pre style="font-size: 20px">
+<div id="response-nav" data-role="navbar">
+    <ul>
+        <li><a href="#response-soap">Soap</a></li>
+        <li><a href="#response-json">JSON</a></li>
+    </ul>
+</div>
+<br />
 
-@ViewBag.Response
+<div class="code-box" id ="response">
+    <div id="response-soap">
+        <pre style="font-size: 20px">@ViewBag.Response_SOAP</pre>
+    </div>
 
-</pre>
+    <div id="response-json" style="display: none">
+        <pre style="font-size: 20px">@ViewBag.Response_JSON</pre>
+    </div>
+</div>

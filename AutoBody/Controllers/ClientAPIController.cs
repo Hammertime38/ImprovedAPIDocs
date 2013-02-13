@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoBody.ClientService;
 using AutoBody.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace AutoBody.Controllers
 {
@@ -43,9 +45,11 @@ namespace AutoBody.Controllers
             var request = getClients(model);
             var response = clientService.GetClients(request);
 
-            //@ViewBag.Request = JsonConvert.SerializeObject(request, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
-            @ViewBag.Request = SoapSerializer.SerializeToSoap<GetClientsRequest>(request);
-            @ViewBag.Response = SoapSerializer.SerializeToSoap<GetClientsResult>(response);
+            @ViewBag.Request_JSON = JsonConvert.SerializeObject(request, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
+            @ViewBag.Response_JSON = JsonConvert.SerializeObject(response, Formatting.Indented, new JsonConverter[] { new StringEnumConverter() });
+
+            @ViewBag.Request_SOAP = SoapSerializer.SerializeToSoap<GetClientsRequest>(request);
+            @ViewBag.Response_SOAP = SoapSerializer.SerializeToSoap<GetClientsResult>(response);
 
             return View();
         }

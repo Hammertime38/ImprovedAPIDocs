@@ -112,7 +112,7 @@ namespace AutoBody.Models
         public string loc_BusinessDescription { get; set; }
 
         [Display(Name = "Additional Image URLs")]
-        public string [] loc_AddImageUrls { get; set; }
+        public string loc_AddImageUrls { get; set; }
 
         [Display(Name = "Facility Square Feet")]
         public int loc_FacilitySqFt { get; set; }
